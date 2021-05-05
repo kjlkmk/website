@@ -1,135 +1,36 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DreamHome</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap"
-      rel="stylesheet"
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <title>카카오내비</title>
+</head>
+<body>
+<h1>카카오 내비</h1>
+
+<a id="navi" href="#" onclick="navi();">
+    <img
+      src="https://developers.kakao.com/assets/img/about/buttons/navi/kakaonavi_btn_medium.png"
     />
-    <script src="https://use.fontawesome.com/8083c854ad.js"></script>
-    <style>
-      :root {
-        --text-color: #f0f4f5;
-        --background-color: #263343;
-        --accent-color: #d49466;
-      }
-      body {
-        margin: 0;
-        font-family: "Source Sans Pro", sans-serif;
-      }
-      a {
-        text-decoration: none;
-        color: var(--text-color);
-      }
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #263343;
-        padding: 8px 12px;
-      }
-      .navbar_logo {
-        font-size: 24px;
-        color: var(--text-color);
-      }
-      .navbar_logo i {
-        color: #d49466;
-      }
-      .navbar_menu {
-        display: flex;
-        list-style: none;
-        padding-left: 0;
-      }
-      .navbar_menu li {
-        padding: 8px 12px;
-      }
-      .navbar_icon {
-        list-style: none;
-        color: white;
-        display: flex;
-        padding-left: 0;
-      }
-      .navbar_icon li {
-        padding: 8px 12px;
-      }
-      .navbar_menu li:hover {
-        background-color: #d49466;
-        border-radius: 4px;
-      }
-      .navbar_toogleBtn {
-        display: none;
-        position: absolute;
-        right: 32px;
-        font-size: 24px;
-        color: #d49466;
-      }
+  </a>
+  
+<script>
+    // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('ddb19c821fa59031f4fc19845a561b00');
 
-      @media screen and (max-width: 666px) {
-        .navbar {
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 8px 24px;
-        }
-        .navbar_menu {
-          display: none;
-          flex-direction: column;
-          align-items: center;
-          width: 100%;
-        }
-        .navbar_menu li {
-          width: 100%;
-          text-align: center;
-        }
-        .navbar_icon {
-          display: none;
-          justify-content: center;
-          width: 100%;
-        }
-        .navbar_toogleBtn {
-          display: block;
-        }
-        .navbar_menu.active,
-        .navbar_icon.active {
-          display: flex;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="navbar_logo">
-        <i class="fa fa-chrome" aria-hidden="true"></i>
-        <a href="#">DreamCoding</a>
-      </div>
+    // SDK 초기화 여부를 판단합니다.
+    console.log(Kakao.isInitialized());
 
-      <ul class="navbar_menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">Weddings</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Bookings</a></li>
-      </ul>
+    function navi() {
+      Kakao.Navi.share({
+        name: '현대백화점 판교점',
+        x: 127.11205203011632,
+        y: 37.39279717586919,
+        coordType: 'wgs84',
+      })
+    }
+</script>
 
-      <ul class="navbar_icon">
-        <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
-        <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
-      </ul>
-
-      <a href="#" class="navbar_toogleBtn"
-        ><i class="fa fa-bars" aria-hidden="true"></i
-      ></a>
-    </nav>
-    <script>
-      const toggleBtn = document.querySelector(".navbar_toogleBtn");
-      const menu = document.querySelector(".navbar_menu");
-      const icon = document.querySelector(".navbar_icon");
-
-      toggleBtn.addEventListener("click", () => {
-        menu.classList.toggle("active");
-        icon.classList.toggle("active");
-      });
-    </script>
-  </body>
+</body>
 </html>
