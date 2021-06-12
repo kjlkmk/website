@@ -14,46 +14,6 @@
       src="https://developers.kakao.com/assets/img/about/buttons/navi/kakaonavi_btn_medium.png"
     />
   </a>
-    
-<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
-
-        <script>
-            // TODO: Replace the following with your app's Firebase project configuration
-            // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
-            var firebaseConfig = {
-                apiKey: "AIzaSyCdcy2XcmSM9j9eEYJxlUYHYJg6xXZX3dk",
-                authDomain: "app-notification-28b89.firebaseapp.com",
-                projectId: "app-notification-28b89",
-                storageBucket: "app-notification-28b89.appspot.com",
-                messagingSenderId: "768170390606",
-                appId: "1:768170390606:web:bf280a47c1a3be3daaff1f",
-                measurementId: "G-9T5QR70CTJ"
-            };
-
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-
-            const messaging = firebase.messaging();
-
-            messaging.requestPermission()
-            .then(function(){
-                console.log('Have permission');
-                return messaging.getToken();
-            })
-            .then(function(token){
-                console.log(token);
-            })
-            .catch(function(err){
-                console.log('Error Occured.');
-            })
-
-            messaging.onMessage(function(payload){
-                console.log('onMessage: ', payload);
-            });
-
-            
-            
-        </script>
   
 <script>
     // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
